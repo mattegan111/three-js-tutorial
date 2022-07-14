@@ -16,13 +16,18 @@ camera.position.setZ(30);
 renderer.render(scene, camera);
 
 const geometryIcosahedron = new THREE.IcosahedronGeometry(10, 0);
-const materialIcosahedron = new THREE.MeshBasicMaterial({ color: 0xb16cea, wireframe: true});
+const materialIcosahedron = new THREE.MeshBasicMaterial({ color: 0xb16cea, wireframe: false});
 const meshIcosahedron = new THREE.Mesh(geometryIcosahedron, materialIcosahedron);
 
 scene.add(meshIcosahedron);
 
 function animate() {
   requestAnimationFrame(animate);
+
+  meshIcosahedron.rotation.x += 0.01;
+  meshIcosahedron.rotation.y += 0.005;
+  meshIcosahedron.rotation.z += 0.01;
+
   renderer.render(scene, camera);
 }
 
