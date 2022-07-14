@@ -24,7 +24,7 @@ scene.add(meshIcosahedron);
 const pointLight = new THREE.PointLight(0xffffff);
 pointLight.position.set(20,20,20);
 
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.025);
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.125);
 
 scene.add(pointLight, ambientLight);
 
