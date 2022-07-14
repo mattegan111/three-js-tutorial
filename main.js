@@ -13,4 +13,17 @@ renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
 camera.position.setZ(30);
 
-renderer.render(scene, camera)
+renderer.render(scene, camera);
+
+const geometryIcosahedron = new THREE.IcosahedronGeometry(10, 0);
+const materialIcosahedron = new THREE.MeshBasicMaterial({ color: 0xb16cea, wireframe: true});
+const meshIcosahedron = new THREE.Mesh(geometryIcosahedron, materialIcosahedron);
+
+scene.add(meshIcosahedron);
+
+function animate() {
+  requestAnimationFrame(animate);
+  renderer.render(scene, camera);
+}
+
+animate();
