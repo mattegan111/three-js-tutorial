@@ -24,7 +24,9 @@ scene.add(meshIcosahedron);
 const pointLight = new THREE.PointLight(0xffffff);
 pointLight.position.set(20,20,20);
 
-scene.add(pointLight)
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.025);
+
+scene.add(pointLight, ambientLight);
 
 function animate() {
   requestAnimationFrame(animate);
