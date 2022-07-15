@@ -67,6 +67,17 @@ const spaceTexture = new THREE.TextureLoader().load('space.jpg');
 scene.background = spaceTexture;
 
 
+const moonTexture = new THREE.TextureLoader().load('moon.jpg');
+
+const moon = new THREE.Mesh(
+  new THREE.SphereGeometry(3),
+  new THREE.MeshStandardMaterial({ map: moonTexture })
+);
+
+moon.position.set(10, 10, 10);
+scene.add(moon);
+
+
 function animate() {
   requestAnimationFrame(animate);
 
