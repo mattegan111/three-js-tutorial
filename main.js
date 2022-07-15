@@ -32,10 +32,42 @@ scene.add(pointLight, ambientLight);
 //Helpers
 
 // const lightHelper = new THREE.PointLightHelper(pointLight);
-// const gridHelper = new THREE.GridHelper(200, 50);
+// const gridHelper = new THREE.GridHelper(200, 50, 0xff0000);
 // scene.add(lightHelper, gridHelper);
 
 const controls = new OrbitControls(camera, renderer.domElement)
+
+function addStar(){
+  const geometryStar = new THREE.SphereGeometry(0.25, 24, 24);
+  const materialStar = new THREE.MeshStandardMaterial({color: 0xffffff});
+  const meshStar = new THREE.Mesh(geometryStar, materialStar);
+
+  let [x, y, z] = randomStarPosition();
+  function randomStarPosition(){
+    let proximityCounter = 0;
+    let [a, b, c] = Array(3).fill().map(() => {
+      // create random positive value
+      let randPosition = THREE.MathUtils.randFloatSpread(300);
+      // if the coordinate is close to our centre, note that by incrementing proximityCounter
+      if (Math.abs(randPosition) < 70){ proximityCounter++; }
+      // if all three dimensions are close to our centre, recalculate c
+      if(proximityCounter === 3){ 
+        randPosition = THREE.MathUtils.randFloat(130, 300); 
+        if(Math.floor(Math.random() * 2) === 0){ randPosition = randPosition * -1; }
+      }
+
+      return randPosition;
+    });
+
+    return [a, b, c]
+  }
+
+  meshStar.position.set(x, y, z);
+  scene.add(meshStar);
+}
+
+Array(800).fill().forEach(addStar);
+
 
 function animate() {
   requestAnimationFrame(animate);
