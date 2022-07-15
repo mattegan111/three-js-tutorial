@@ -45,12 +45,12 @@ function addStar(){
   let proximityCounter = 0;
   let [x, y, z] = Array(3).fill().map(() => {
     // create random positive value
-    let randPosition = THREE.MathUtils.randFloatSpread(1250);
+    let randPosition = THREE.MathUtils.randFloatSpread(800);
     // if the coordinate is close to our centre, note that by incrementing proximityCounter
-    if (Math.abs(randPosition) < 200){ proximityCounter++; }
+    if (Math.abs(randPosition) < 100){ proximityCounter++; }
     // if all three dimensions are close to our centre, recalculate c
     if(proximityCounter === 3){ 
-      randPosition = THREE.MathUtils.randFloat(500, 1250); 
+      randPosition = THREE.MathUtils.randFloat(100, 800); 
       if(Math.floor(Math.random() * 2) === 0){ randPosition *= -1; }
     }
 
@@ -61,7 +61,7 @@ function addStar(){
   scene.add(meshStar);
 }
 
-Array(1000).fill().forEach(addStar);
+Array(5000).fill().forEach(addStar);
 
 const spaceTexture = new THREE.TextureLoader().load('space.jpg');
 scene.background = spaceTexture;
