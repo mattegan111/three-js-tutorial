@@ -70,11 +70,11 @@ scene.background = spaceTexture;
 const moonTexture = new THREE.TextureLoader().load('moon.jpg');
 
 const moon = new THREE.Mesh(
-  new THREE.SphereGeometry(3),
+  new THREE.SphereGeometry(2),
   new THREE.MeshStandardMaterial({ map: moonTexture })
 );
 
-moon.position.set(10, 10, 10);
+moon.position.set(-10, 10, 10);
 scene.add(moon);
 
 
@@ -84,6 +84,10 @@ function animate() {
   meshIcosahedron.rotation.x += 0.005;
   meshIcosahedron.rotation.y += 0.0025;
   meshIcosahedron.rotation.z += 0.005;
+
+  moon.rotation.x += 0.005;
+  moon.rotation.y += 0.0025;
+  moon.rotation.z += 0.005;
 
   controls.update();
 
