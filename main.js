@@ -85,9 +85,8 @@ function animate() {
   meshIcosahedron.rotation.y += 0.0025;
   meshIcosahedron.rotation.z += 0.005;
 
-  moon.rotation.x += 0.005;
-  moon.rotation.y += 0.0025;
-  moon.rotation.z += 0.005;
+  moon.rotation.y -= 0.005;
+  moon.rotation.z -= 0.001;
 
   controls.update();
 
